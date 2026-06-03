@@ -309,19 +309,20 @@ table tr:nth-child(even) {
 }
 
 .team-row {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
+    display: grid;
+    /* Membuat kolom otomatis, minimal lebar card 180px, maksimal membagi rata */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
     margin-bottom: 16px;
 }
+
 
 .team-card {
     background: white;
     border: 1px solid #ccc;
-    padding: 14px;
+    padding: 16px;
     text-align: center;
-    flex: 1;
-    min-width: 130px;
+    /* Properti flex dan min-width dihapus karena sudah diatur secara efisien oleh Grid di atas */
 }
 
 .team-card .inisial {
