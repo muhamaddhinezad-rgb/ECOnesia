@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECOnesia - Bank Sampah Digital</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <h1>ECOnesia</h1>
+    <ul>
+        <li><a id="nav-home" onclick="goTo('home')">Home</a></li>
+        <li><a id="nav-input" onclick="goTo('input')">Masukan Data</a></li>
+        <li><a id="nav-riwayat" onclick="goTo('riwayat')">Riwayat</a></li>
+        <li><a id="nav-about" onclick="goTo('about')">About Us</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+    <div class="banner">
+        <h2>Bank Sampah Digital ECOnesia</h2>
+        <p>Setor sampah plastik, kumpulkan poin, jaga lingkungan bersama.</p>
+        <button onclick="goTo('input')">Setor Sekarang</button>
+        <button onclick="goTo('riwayat')">Lihat Riwayat</button>
+    </div>
+
+    <div class="container">
+        <h2>Statistik</h2>
+        <div class="stats-box">
+            <div class="stat"><div class="angka" id="s-kg">0</div><div class="label">Kg Plastik Terkumpul</div></div>
+            <div class="stat"><div class="angka" id="s-warga">0</div><div class="label">Warga Aktif</div></div>
+            <div class="stat"><div class="angka" id="s-poin">0</div><div class="label">Total Poin</div></div>
+            <div class="stat"><div class="angka" id="s-trans">0</div><div class="label">Transaksi Bulan Ini</div></div>
+        </div>
+
+        <h2>Fitur</h2>
+        <div class="card-grid">
+            <div class="card"><h4>Pencatatan Digital</h4><p>Setiap setoran plastik tercatat otomatis lengkap dengan jenis, berat, dan poin.</p></div>
+            <div class="card"><h4>Sistem Poin</h4><p>Kumpulkan poin dari plastik yang disetor dan tukarkan dengan berbagai hadiah.</p></div>
+            <div class="card"><h4>Dampak Lingkungan</h4><p>Pantau kontribusi kamu dalam mengurangi plastik dari lingkungan sekitar.</p></div>
+            <div class="card"><h4>Data Terverifikasi</h4><p>Setiap transaksi diverifikasi oleh petugas Bank Sampah yang terlatih.</p></div>
+        </div>
+
+        <h2>Top Kontributor Bulan Ini</h2>
+        <table>
+            <thead>
+                <tr><th>Peringkat</th><th>Nama</th><th>RT/RW</th><th>Total KG</th><th>Poin</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Siti Nurhaliza</td><td>RT 04/RW 02</td><td>18.4 kg</td><td>1.840</td></tr>
+                <tr><td>2</td><td>Budi Raharjo</td><td>RT 01/RW 05</td><td>15.2 kg</td><td>1.520</td></tr>
+                <tr><td>3</td><td>Dewi Anggraeni</td><td>RT 07/RW 01</td><td>13.8 kg</td><td>1.380</td></tr>
+                <tr><td>4</td><td>Ahmad Husain</td><td>RT 03/RW 03</td><td>11.5 kg</td><td>1.150</td></tr>
+                <tr><td>5</td><td>Rina Puspitasari</td><td>RT 02/RW 04</td><td>9.6 kg</td><td>960</td></tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <footer>© 2026 ECOnesia - Bank Sampah Digital</footer>
+</div>
+
+<!-- MASUKAN DATA -->
+<div id="page-input" class="page">
+    <div class="container">
+        <h2>Masukan Data Setoran</h2>
+        <div id="notif"></div>
+        <div class="form-box">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="f-nama" placeholder="Nama warga">
+                </div>
+                <div class="form-group">
+                    <label>Nomor ID Warga</label>
+                    <input type="text" id="f-id" placeholder="ECO-2026-0001">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>RT / RW</label>
+                    <input type="text" id="f-rtrw" placeholder="RT 04 / RW 02">
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Setor</label>
+                    <input type="date" id="f-tgl">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Plastik</label>
+                <div class="jenis-grid">
+                    <button class="jenis-btn aktif" onclick="pilih(this,'PET')">PET (Botol Minuman)</button>
+                    <button class="jenis-btn" onclick="pilih(this,'HDPE')">HDPE (Botol Deterjen)</button>
+                    <button class="jenis-btn" onclick="pilih(this,'PVC')">PVC (Pipa)</button>
+                    <button class="jenis-btn" onclick="pilih(this,'LDPE')">LDPE (Kantong)</button>
+                    <button class="jenis-btn" onclick="pilih(this,'PP')">PP (Wadah Makanan)</button>
+                    <button class="jenis-btn" onclick="pilih(this,'PS')">PS (Styrofoam)</button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Berat (KG)</label>
+                    <input type="number" id="f-berat" placeholder="2.5" min="0.1" step="0.1" oninput="hitung()">
+                </div>
+                <div class="form-group">
+                    <label>Kondisi Plastik</label>
+                    <select id="f-kondisi" onchange="hitung()">
+                        <option value="">- Pilih -</option>
+                        <option value="bersih">Bersih & Kering (bonus 10%)</option>
+                        <option value="kotor">Kotor / Basah</option>
+                        <option value="campur">Campuran</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Catatan (opsional)</label>
+                <textarea id="f-cat" placeholder="Keterangan tambahan..."></textarea>
+            </div>
+
+            <div class="poin-info">
+                <div>
+                    Estimasi poin:<br>
+                    <small id="det-poin" style="color:#555">Isi berat untuk melihat estimasi</small>
+                </div>
+                <div class="pts" id="prev-pts">—</div>
+            </div>
+
+            <button class="btn-submit" onclick="submit()">Simpan Data Setoran</button>
+        </div>
+
+        <h2>Referensi Poin per KG</h2>
+        <table style="max-width:400px">
+            <thead><tr><th>Jenis</th><th>Keterangan</th><th>Poin/KG</th></tr></thead>
+            <tbody>
+                <tr><td>PET</td><td>Botol minuman</td><td>100</td></tr>
+                <tr><td>HDPE</td><td>Botol deterjen</td><td>90</td></tr>
+                <tr><td>PP</td><td>Wadah makanan</td><td>80</td></tr>
+                <tr><td>PVC</td><td>Pipa / selang</td><td>70</td></tr>
+                <tr><td>LDPE</td><td>Kantong kresek</td><td>60</td></tr>
+                <tr><td>PS</td><td>Styrofoam</td><td>50</td></tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <footer>© 2026 ECOnesia - Bank Sampah Digital</footer>
+</div>
+
+<!-- RIWAYAT -->
+<div id="page-riwayat" class="page">
+    <div class="container">
+        <h2>Riwayat Setoran</h2>
+
+        <div class="sum-row">
+            <div class="sum-card"><div class="n" id="my-poin">3.240</div><div class="l">Total Poin Saya</div></div>
+            <div class="sum-card"><div class="n" id="my-kg">32.4</div><div class="l">Total KG Disetor</div></div>
+            <div class="sum-card"><div class="n" id="my-tr">12</div><div class="l">Total Transaksi</div></div>
+            <div class="sum-card"><div class="n" style="color:orange" id="my-rank">#4</div><div class="l">Peringkat Bulan Ini</div></div>
+        </div>
+
+        <div class="filter-row">
+            <select id="fil-bln" onchange="buildTbl()">
+                <option value="">Semua Bulan</option>
+                <option value="05">Mei 2026</option>
+                <option value="04">April 2026</option>
+                <option value="03">Maret 2026</option>
+            </select>
+            <select id="fil-jns" onchange="buildTbl()">
+                <option value="">Semua Jenis</option>
+                <option>PET</option><option>HDPE</option><option>LDPE</option><option>PP</option>
+            </select>
+        </div>
+
+        <table id="tbl-main">
+            <thead>
+                <tr><th>Tanggal</th><th>Jenis</th><th>Berat</th><th>Kondisi</th><th>Poin</th><th>Status</th></tr>
+            </thead>
+            <tbody id="tbl-body"></tbody>
+        </table>
+        <br>
+    </div>
+    <footer>© 2026 ECOnesia - Bank Sampah Digital</footer>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+    <div class="container">
+        <h2>Tentang ECOnesia</h2>
+
+        <div class="about-box">
+            <p>ECOnesia adalah platform Bank Sampah Digital yang hadir untuk membantu masyarakat Indonesia dalam mengelola sampah plastik secara digital. Setiap tahun, jutaan ton plastik mencemari lingkungan kita. Kami percaya bahwa sampah plastik bisa punya nilai lebih dari yang selama ini kita kira.</p>
+            <p>Lewat platform ini, warga bisa menyetorkan sampah plastik, mencatat poin secara digital, dan memantau kontribusi nyata mereka terhadap lingkungan sekitar.</p>
+        </div>
+
+        <h2>Statistik Masalah Plastik Indonesia</h2>
+        <table style="max-width:500px;margin-bottom:20px">
+            <thead><tr><th>Data</th><th>Angka</th></tr></thead>
+            <tbody>
+                <tr><td>Sampah plastik per tahun</td><td>87 juta ton</td></tr>
+                <tr><td>Yang berhasil didaur ulang</td><td>7%</td></tr>
+                <tr><td>ECOnesia berdiri</td><td>2023</td></tr>
+                <tr><td>Provinsi terjangkau</td><td>34 provinsi</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Tim Kami</h2>
+        <div class="team-row">
+            <div class="team-card">
+                <div class="inisial">AW</div>
+                <h4>Arif Wibowo</h4>
+                <p>Co-Founder & CEO<br>Lingkungan Hidup</p>
+            </div>
+            <div class="team-card">
+                <div class="inisial">RD</div>
+                <h4>Rizka Dewanti</h4>
+                <p>Co-Founder & CTO<br>Software Engineer</p>
+            </div>
+            <div class="team-card">
+                <div class="inisial">MP</div>
+                <h4>Muhammad Putra</h4>
+                <p>Head of Community<br>Pemberdayaan Warga</p>
+            </div>
+            <div class="team-card">
+                <div class="inisial">LS</div>
+                <h4>Lina Sari</h4>
+                <p>Head of Operations<br>Logistik & Operasional</p>
+            </div>
+        </div>
+
+        <h2>Nilai-Nilai Kami</h2>
+        <div class="card-grid">
+            <div class="card"><h4>Berkelanjutan</h4><p>Setiap keputusan mempertimbangkan dampak jangka panjang bagi lingkungan.</p></div>
+            <div class="card"><h4>Inklusif</h4><p>Dirancang untuk semua kalangan, dari desa hingga kota besar.</p></div>
+            <div class="card"><h4>Transparan</h4><p>Setiap transaksi tercatat dan bisa diperiksa kapan saja.</p></div>
+            <div class="card"><h4>Inovatif</h4><p>Terus berkembang agar pengelolaan sampah makin efisien.</p></div>
+        </div>
+        <br>
+    </div>
+    <footer>© 2026 ECOnesia - Bank Sampah Digital | contact@econesia.id | (021) 123-4567</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

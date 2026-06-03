@@ -1,0 +1,362 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+nav {
+    background-color: green;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.page { display: none; }
+.page.active { display: block; }
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+h2 {
+    color: green;
+}
+
+/* HOME */
+.banner {
+    background-color: #4caf50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.banner h2 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.banner button {
+    background-color: white;
+    color: green;
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.banner button:hover {
+    background-color: #e0e0e0;
+}
+
+.stats-box {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    flex: 1;
+    text-align: center;
+    min-width: 130px;
+}
+
+.stat .angka {
+    font-size: 26px;
+    font-weight: bold;
+    color: green;
+}
+
+.stat .label {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
+}
+
+.card-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 16px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.card h4 {
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.card p {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 9px 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: green;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* FORM */
+.form-box {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.poin-info {
+    background: #e8f5e9;
+    border: 1px solid #4caf50;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.poin-info .pts {
+    font-size: 22px;
+    font-weight: bold;
+    color: green;
+}
+
+.btn-submit {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.btn-submit:hover {
+    background-color: #388e3c;
+}
+
+/* jenis plastik radio-like */
+.jenis-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.jenis-btn {
+    border: 1px solid #aaa;
+    padding: 7px 13px;
+    cursor: pointer;
+    font-size: 13px;
+    background: white;
+    font-family: Arial, sans-serif;
+}
+
+.jenis-btn.aktif {
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+
+/* riwayat summary */
+.sum-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.sum-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 14px 18px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+.sum-card .n { font-size: 22px; font-weight: bold; color: green; }
+.sum-card .l { font-size: 12px; color: #666; margin-top: 3px; }
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.filter-row select {
+    padding: 6px 10px;
+    border: 1px solid #aaa;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+}
+
+/* about */
+.about-box {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.about-box p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.7;
+}
+
+.team-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.team-card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 14px;
+    text-align: center;
+    flex: 1;
+    min-width: 130px;
+}
+
+.team-card .inisial {
+    width: 44px;
+    height: 44px;
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.team-card h4 { margin: 0 0 4px; font-size: 14px; }
+.team-card p { margin: 0; font-size: 12px; color: #666; }
+
+footer {
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+    margin-top: 30px;
+}
+
+#notif {
+    display: none;
+    background: #e8f5e9;
+    border: 1px solid green;
+    padding: 10px 16px;
+    margin: 10px auto;
+    max-width: 600px;
+    font-size: 14px;
+    color: #1b5e20;
+}
